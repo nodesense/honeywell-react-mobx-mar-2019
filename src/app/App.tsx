@@ -1,4 +1,4 @@
-// App.ts
+// App.tsx
 
 import React from 'react';
 
@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 
 import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 
 // class component
 class App extends React.Component {
@@ -19,9 +20,13 @@ class App extends React.Component {
             <div>
                 <h2>React App</h2>
                 <Header title="Product app" />
+                <Checkout />
                 <Cart />
                 <Home />
-                <Footer year={2019} company="Product, Inc" />
+                <Footer year={2019}  company="Product Inc" >
+                    <p>Contact time: USA 8:00 to 5:00 PM</p>
+                    <p>Contact time: IN 7:00 to 3:00 PM</p>
+                </Footer>
             </div>
         )
     }
