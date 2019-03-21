@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 // default import
 import App from './app/App';
 
+import './index.css';
+
 // take virtual dom and mount in real dom
 
 // Uni direction, one direction
