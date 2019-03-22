@@ -2,9 +2,10 @@
 import { CartItem } from './../models/CartItem';
 import {observable, computed, action} from 'mobx';
 import { Product } from '../models/Product';
+import Cart from '../components/Cart';
 
 export class CartState {
-    @observable items: CartItem[] = [];
+    @observable items: CartItem[] = [   ];
 
     @computed get amount() {
         let totalAmount = 0;

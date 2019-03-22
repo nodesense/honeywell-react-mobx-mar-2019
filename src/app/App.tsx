@@ -6,7 +6,10 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
 
-import Cart from './components/Cart';
+// import Cart from './components/Cart';
+
+import Loadable from 'react-loadable';
+
 import Checkout from './components/Checkout';
 import Counter from './components/Counter';
 import MobxCounter from './components/MobxCounter';
@@ -20,11 +23,26 @@ import {BrowserRouter as Router,
         Switch
 } from 'react-router-dom';
 
+
+const Loading = () => (
+    <div>
+        <h2>Loading....</h2>
+    </div>
+)
+
 const NotFound = () => (
     <div>
         <h2>Page not found</h2>
     </div>
 );
+
+
+
+const LoadableCart = Loadable({
+    // webpack, knows import () func, it creates separate bundle for Cart/CartList..
+    loader: () => import('./components/Cart'),
+    loading: Loading,
+  });
 
 // class component
 class App extends React.Component {
@@ -41,7 +59,7 @@ class App extends React.Component {
 
                 <Switch>
                     <Route path="/" exact component={Home} />
-                    <Route path="/cart" component={Cart} />
+                    <Route path="/cart" component={LoadableCart} />
                     <Route path="/checkout" component={Checkout} />
                     <Route path='/about' render={ ()=> (
                         <div>
