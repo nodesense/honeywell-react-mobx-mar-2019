@@ -22,6 +22,20 @@ export class CartState {
 
         return totalItems;
     }
+
+    @computed get discount() {
+        if (this.count > 4) {
+            return 10;
+        }
+
+        return 0;
+    }
+
+    @computed get grandTotal() {
+        let total = this.amount - (this.amount/100.0 * this.discount);
+
+        return total;
+    }
  
     addItem(item: CartItem) {
         // mutable

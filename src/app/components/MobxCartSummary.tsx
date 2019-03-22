@@ -10,8 +10,7 @@ interface CartSummaryProps {
 
 // state, local
 interface CartSummaryState {
-    discount: number;
-    grandTotal: number;
+     
 }
 
 // PureComponent inheriting from Component
@@ -24,11 +23,7 @@ interface CartSummaryState {
 class MobxCartSummary extends React.Component<CartSummaryProps, CartSummaryState> {
     constructor(props: CartSummaryProps) {
         super(props);
-        this.state = {
-            // to be computed
-            discount: 0,
-            grandTotal: 0
-        }
+         
     }
  
     render() {
@@ -36,13 +31,16 @@ class MobxCartSummary extends React.Component<CartSummaryProps, CartSummaryState
 
         const cart = this.props.cart;
 
+        // const discount = cart!.discount;
+        // const grandTotal = cart!.grandTotal;
+
         return (
             <div>
                 <h2>Cart Summary</h2>
                 <p> Amount : {cart!.amount} </p>
                 <p> Count : {cart!.count} </p>
-                <p> Discount : {this.state.discount} </p>
-                <p> grandTotal : {this.state.grandTotal} </p>
+                <p> Discount : {cart!.discount} </p>
+                <p> grandTotal : {cart!.grandTotal} </p>
             </div>
         )
     }
