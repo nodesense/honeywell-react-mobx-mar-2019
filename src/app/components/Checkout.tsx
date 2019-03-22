@@ -9,10 +9,16 @@ interface CheckoutState {
     state: string;
 }
 
+type StateKeys = keyof CheckoutState;
+
+
 class Checkout extends React.Component<CheckoutProps, CheckoutState> {
     // FIXME
-    fullNameElement: any; // HTMLElement
+    fullNameElement!: HTMLElement; // HTMLElement
     pElem: any;
+
+    private myRef = React.createRef<HTMLInputElement>()
+
 
     constructor(props: CheckoutProps) {
         super(props);
@@ -23,26 +29,47 @@ class Checkout extends React.Component<CheckoutProps, CheckoutState> {
         }
     }
 
-    onValueChange = (e: any) => {
+    dynSetState = <T extends string> (key: StateKeys, value: string) => {
+        this.setState({
+          [key]: value
+        } as Pick<CheckoutState, keyof CheckoutState>)
+      }
+
+    updateState = <T extends string>(key: keyof CheckoutState, value: T) => (
+        prevState: CheckoutState
+      ): CheckoutState => ({
+        ...prevState,
+        [key]: value
+      })
+
+    // FIXME
+    onValueChange = (e: React.FormEvent<HTMLInputElement | HTMLSelectElement>) => {
         //e - event object
         // e.target -- DOM Element
-        console.log(e.target.name, e.target.value);
+        console.log(e.currentTarget.name, e.currentTarget.value);
 
-        const fieldName:string = e.target.name;
+        const fieldName:StateKeys =  e.currentTarget.name as StateKeys;
 
-        //FIXME
-        let newFields: any =  {
-            [fieldName] : e.target.value
-        };
+        this.dynSetState(fieldName, e.currentTarget.value);
 
-        this.setState(newFields);
+        // //FIXME
+        // let newFields: any =  {
+        //     [fieldName] : e.currentTarget.value
+        // };
+
+        // this.setState({
+        //     [ e.currentTarget.name]:  e.currentTarget.value
+        // });
     }
 
     componentDidMount() {
          // ref can be accessible here
          // ref ? real dom reference
-         this.fullNameElement.focus();
+        // this.fullNameElement.focus();
          this.pElem.textContent = 'from did mount';
+
+         const node = this.myRef.current
+         node!.focus();
     }
 
     render() {
@@ -58,7 +85,7 @@ class Checkout extends React.Component<CheckoutProps, CheckoutState> {
                         value={this.state.fullName}
                         onChange={this.onValueChange}
 
-                        ref={ (elem) => this.fullNameElement = elem  }
+                        ref={ this.myRef }
                         />
 
                 <select name="state"

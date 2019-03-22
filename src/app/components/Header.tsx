@@ -4,6 +4,8 @@ import React from 'react';
 interface HeaderProps {
     title: string;
 }
+
+import {NavLink} from 'react-router-dom';
  
 // SFC Stateless Functional component
 
@@ -16,6 +18,55 @@ const Header: React.SFC<HeaderProps> = (props) => {
     return (
         <div>
             <h2>{props.title}</h2>
+
+            <NavLink to="/" exact className="button"
+                            activeClassName="success"
+            >
+                Home
+            </NavLink>
+
+            <NavLink to="/products" className="button"
+                            activeClassName="success"
+            >
+                Products
+            </NavLink>
+
+            <NavLink to="/cart" className="button"
+                            activeClassName="success"
+            >
+                Cart
+            </NavLink>
+
+
+            <NavLink to="/mobx-cart" className="button"
+                            activeClassName="success"
+            >
+                Mobx Cart
+            </NavLink>
+
+
+            <NavLink to="/checkout" className="button"
+                            activeClassName="success"
+            >
+                Checkout
+            </NavLink>
+
+
+            <NavLink to="/about" className="button"
+                            activeClassName="success"
+            >
+                About
+            </NavLink>
+
+
+            <NavLink to="/counter" className="button"
+                            activeClassName="success"
+            >
+                Counter
+            </NavLink>
+
+
+
             <hr />
         </div>
     )

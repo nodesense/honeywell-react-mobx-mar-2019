@@ -8,6 +8,18 @@ import Home from './components/Home';
 
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
+import Counter from './components/Counter';
+
+import {BrowserRouter as Router,
+        Route, 
+        Switch
+} from 'react-router-dom';
+
+const NotFound = () => (
+    <div>
+        <h2>Page not found</h2>
+    </div>
+);
 
 // class component
 class App extends React.Component {
@@ -17,17 +29,35 @@ class App extends React.Component {
         // JSX = JavaScript + XML
         // TSX = TypeScript + XML
         return (
+            <Router>
             <div>
                 <h2>React App</h2>
                 <Header title="Product app" />
-                <Checkout />
-                <Cart />
-                <Home />
+
+                <Switch>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/cart" component={Cart} />
+                    <Route path="/checkout" component={Checkout} />
+                    <Route path='/about' render={ ()=> (
+                        <div>
+                            <h2>About</h2>
+                        </div>
+                    )  } />
+
+                <Route path="/counter" 
+                        render={() => <Counter startValue={333} /> } />
+                    
+
+                    <Route path='*' component={NotFound} />
+                </Switch>
+
+                 
                 <Footer year={2019}  company="Product Inc" >
                     <p>Contact time: USA 8:00 to 5:00 PM</p>
                     <p>Contact time: IN 7:00 to 3:00 PM</p>
                 </Footer>
             </div>
+            </Router>
         )
     }
 }
