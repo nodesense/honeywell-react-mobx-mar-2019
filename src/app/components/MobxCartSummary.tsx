@@ -1,4 +1,4 @@
-// CartSummary.tsx
+// MobxCartSummary.tsx
 import React from 'react';
 import { CartState } from '../state/CartState';
 import { inject, observer } from 'mobx-react';

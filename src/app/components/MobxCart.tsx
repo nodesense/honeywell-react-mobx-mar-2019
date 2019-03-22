@@ -1,4 +1,4 @@
-// Cart.tsx
+// MobxCart.tsx
 import React from 'react';
 import { CartItem } from '../models/CartItem';
 
