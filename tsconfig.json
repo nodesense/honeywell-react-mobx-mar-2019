@@ -11,6 +11,10 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
+    
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "moduleResolution": "node",

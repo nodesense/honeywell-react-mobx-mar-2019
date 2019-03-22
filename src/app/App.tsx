@@ -9,6 +9,9 @@ import Home from './components/Home';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import Counter from './components/Counter';
+import MobxCounter from './components/MobxCounter';
+import MobxReactCounter from './components/MobxReactCounter';
+
 
 import {BrowserRouter as Router,
         Route, 
@@ -46,6 +49,14 @@ class App extends React.Component {
 
                 <Route path="/counter" 
                         render={() => <Counter startValue={333} /> } />
+                    
+
+
+                <Route path="/mobx-counter" 
+                        render={() => <MobxCounter /> } />
+
+                <Route path="/mobx-react-counter" 
+                        render={() => <MobxReactCounter /> } />
                     
 
                     <Route path='*' component={NotFound} />

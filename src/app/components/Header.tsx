@@ -66,6 +66,21 @@ const Header: React.SFC<HeaderProps> = (props) => {
             </NavLink>
 
 
+            <NavLink to="/mobx-counter" className="button"
+                            activeClassName="success"
+            >
+                Mobx Counter
+            </NavLink>
+
+
+
+            <NavLink to="/mobx-react-counter" className="button"
+                            activeClassName="success"
+            >
+                Mobx React Counter
+            </NavLink>
+
+
 
             <hr />
         </div>
