@@ -11,12 +11,12 @@ import './mobx-demo';
 import {Provider} from 'mobx-react';
 
 import counter from './app/state/CounterState';
-import cart from './app/state/CartState';
+import {CartState} from './app/state/CartState';
 
 // a store contains multiple states
 const store = {
     counter: counter,
-    cart //cart: cart
+    cart: new CartState() //cart: cart
     //cart: cart,
     //...
 }

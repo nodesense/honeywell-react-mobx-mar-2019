@@ -1,18 +1,22 @@
 // Header.tsx
 import React from 'react';
 
+
 interface HeaderProps {
     title: string;
+    cart?: Cart;
 }
 
 import {NavLink} from 'react-router-dom';
- 
+import { observer, inject } from 'mobx-react';
+import Cart from './Cart';
+  
 // SFC Stateless Functional component
 
 // ES6 style
 // functional component
 // props are passed as function argument
-const Header: React.SFC<HeaderProps> = (props) => {
+const Header: React.SFC<HeaderProps> = inject("cart", 'counter') (observer((props) => {
     // props are immutable
     // error props.title = 'test'; 
     return (
@@ -41,7 +45,7 @@ const Header: React.SFC<HeaderProps> = (props) => {
             <NavLink to="/mobx-cart" className="button"
                             activeClassName="success"
             >
-                Mobx Cart
+                Mobx Cart [{props.cart!.amount}]
             </NavLink>
 
 
@@ -81,10 +85,16 @@ const Header: React.SFC<HeaderProps> = (props) => {
             </NavLink>
 
 
+            <button onClick={ () => {
+                
+            } }>
+               Reset
+            </button> 
+
 
             <hr />
         </div>
     )
-}
+}))
 
 export default Header;
