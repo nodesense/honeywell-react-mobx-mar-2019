@@ -52,7 +52,7 @@ class ProductList extends React.Component<ProductListProps, ProductListState> {
                                     <td>{product.name}</td>
                                     <td>{product.price}</td>
                                     <td>
-                                        <button onClick={() => {}}>
+                                        <button onClick={() => this.props.cart!.addProductToCart(product) }>
                                             +Cart
                                         </button>
                                     </td>

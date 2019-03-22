@@ -1,6 +1,7 @@
 // state/CartState.ts
 import { CartItem } from './../models/CartItem';
 import {observable, computed, action} from 'mobx';
+import { Product } from '../models/Product';
 
 export class CartState {
     @observable items: CartItem[] = [];
@@ -63,6 +64,11 @@ export class CartState {
 
     empty() {
         this.items = [];
+    }
+
+    addProductToCart(product: Product) {
+        const item = new CartItem(product.id, product.name, product.price, 1);
+        this.addItem(item);
     }
 }
 
